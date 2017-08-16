@@ -107,6 +107,8 @@
     <section class="markdown-content"><blockquote>
 <p>转载自<a href="http://blog.csdn.net/u010551621/article/details/46907575" target="_blank" rel="external">CSDN的博主天才暴风的文章</a></p>
 </blockquote>
+<p>首先，论文中的表述如图：</p>
+<p><img src="http://img1.ph.126.net/4VmWjinIi_VUiHNTZwoM7Q==/2623065307984595647.jpg" alt=""></p>
 <p>通常，我们在评价classifier的性能时使用的是accuracy，考虑在多类分类的背景下<br><br><br>accuracy = (分类正确的样本个数) / (分类的所有样本个数)<br><br></p>
 <p>这样做其实看上去也挺不错的，不过可能会出现一个很严重的问题：例如某一个不透明的袋子里面装了1000台手机，其中有600台iphone6, 300台galaxy s6, 50台华为mate7,50台mx4(当然，这些信息分类器是不知道的。。。)。如果分类器只是简单的把所有的手机都预测为iphone6, 那么通过上面的公式计算的准确率accuracy为0.6，看起来还不错;可是三星，华为和小米的全部预测错了。如果再给一个袋子，里面装着600台galaxy s6, 300台mx4, 50台华为mate7,50台iphone，那这个分类器立马就爆炸了，连回家带孩子的要求都达不到<br><br><br>所以，仅仅用accuracy来衡量一个分类器的性能是很不科学的。为此，引入了宏平均(micro-average)的概念。介绍宏平均之前，还要介绍几个概念：<br><br></p>
 <ol>
