@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sanmisan&#39;s tree</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://sanmisanfan.github.io/"/>
+  <updated>2017-08-16T13:34:42.000Z</updated>
+  <id>https://sanmisanfan.github.io/</id>
+  
+  <author>
+    <name>Sanmisan Fan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>多标签分类(Multi-label classification)性能评价中的宏平均(macro-average)与微平均(micro-average)</title>
+    <link href="https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/"/>
+    <id>https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/</id>
+    <published>2017-08-16T13:11:03.000Z</published>
+    <updated>2017-08-16T13:34:42.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote>
+<p>转载自<a href="http://blog.csdn.net/u010551621/article/details/46907575" target="_blank" rel="external">CSDN的博主天才暴风的文章</a></p>
+</blockquote>
+<p>首先，论文中的表述如图：</p>
+<p><img src="http://img1.ph.126.net/4VmWjinIi_VUiHNTZwoM7Q==/2623065307984595647.jpg" alt=""></p>
+<p>通常，我们在评价classifier的性能时使用的是accuracy，考虑在多类分类的背景下<br><br><br>accuracy = (分类正确的样本个数) / (分类的所有样本个数)<br><br></p>
+<p>这样做其实看上去也挺不错的，不过可能会出现一个很严重的问题：例如某一个不透明的袋子里面装了1000台手机，其中有600台iphone6, 300台galaxy s6, 50台华为mate7,50台mx4(当然，这些信息分类器是不知道的。。。)。如果分类器只是简单的把所有的手机都预测为iphone6, 那么通过上面的公式计算的准确率accuracy为0.6，看起来还不错;可是三星，华为和小米的全部预测错了。如果再给一个袋子，里面装着600台galaxy s6, 300台mx4, 50台华为mate7,50台iphone，那这个分类器立马就爆炸了，连回家带孩子的要求都达不到<br><br><br>所以，仅仅用accuracy来衡量一个分类器的性能是很不科学的。为此，引入了宏平均(micro-average)的概念。介绍宏平均之前，还要介绍几个概念：<br><br></p>
+<ol>
+<li>precision(准确率，查准率)</li>
+<li>recall(召回率，查全率)</li>
+<li>F-measure<br><br><br>文字性的概念我就不水，我从符号上来表示一下吧：<br><br><br>多类分类问题中，分类结果一般有4种情况:</li>
+</ol>
+<ul>
+<li>属于类C的样本被正确分类到类C，记这一类样本数为 TP</li>
+<li>不属于类C的样本被错误分类到类C，记这一类样本数为 FP</li>
+<li>属于类别C的样本被错误分类到类C的其他类，记这一类样本数为 TN</li>
+<li>不属于类别C的样本被正确分类到了类别C的其他类，记这一类样本数为 FN<br><br><br>从字面意思上来说，某一类别C的准确率(查准率)可以理解为预测该类样本的准确性：</li>
+</ul>
+<p>precision = TP / (TP + FP)<br><br><br>这里很好理解， TP+FP实际上就是分类器在分类时，预测为类别C的样本个数。<br><br><br>而某一个类别C的召回率(查全率)可以理解为，你预测正确的类别C的样本对于样本集中类别C的样本的覆盖程度，如果完全覆盖，那么recall就是100%<br><br><br>recall = TP / (TP + FN)<br><br><br>这里的TP+FN表示样本集中，真实类标为C的样本的个数<br>单一的用recall或者precision来评价分类器也是不合理的，譬如文章开头说到的那个简单的classifier<br><br><br>我们通过公式可以惊奇的发现在两个样本集上的recall都是100%，这是因为所有的iphone6样本，分类器都可以把它预测对，但是准确率就大不相同了；在第一个数据集上的准确率precision为0.6，但是第二个样本集上的准确率只有可怜的0.05；对于第二个样本集的结果，我可以说classifier很好，因为recall很高，也可以说classifier不好，因为precision很低。不过很明显，这些说法都是不合理的；综合考虑两种指标才是直观的比较可靠的指标。<br><br><br>现在就引入F-measure，计算公式如下<br><br><br>F- measure = (A + 1) <em> precision </em> recall / (A ^ 2 * precision + recall)</p>
+<p>（不知道怎么写公式，就直接用文字写的，感觉有点挫）<br><br><br>如果A取1，那么F-measure实际上就是precison和recall的调和平均值2<em>precision</em>recall / (precision + recall)， 此时的F-measure就称为F1值<br><br><br>把这些概念说了， 就回到刚才的宏平均的计算, 把所有类的F1值取一个算术平均就得到了Macro-average<br><br><br>微平均Micro-average=(TP + FP) / (TP + TN + FP + FN)<br><br><br>分母就是输入分类器的预测样本个数，分子就是预测正确的样本个数（无论类别), 微平均实际上就是在文章开头说的accuracy<br><br><br>写到这里就差不多了，最后以一个例子来收尾把</p>
+<p>考虑现在输入分类器的样本有10个，他们属于类别A B C</p>
+<p>假设这10个样本的真实类标为（有序）和分类器预测的类标分别是： </p>
+<ul>
+<li><p>真实：A A A C B C A B B C</p>
+</li>
+<li><p>预测：A A C B A C A C B C</p>
+</li>
+</ul>
+<p>precision(A) = 3(正确预测为A类的样本个数为3) / 4(预测为A类的样本数为4) = 0.75  recall(A) = 3 / 4(真实A类样本有4个) = 0.75  </p>
+<p>precision(B) = 1 / 2 = 0.5   recall(B) = 1 / 3 = 0.3333</p>
+<p>precision(C) = 2 / 4 = 0.5  recall(C) = 2 / 3 = 0.6667</p>
+<p>F值计算出来之后，取算术平均就是Macro-average</p>
+<p>Micro-average = 6(预测正确的样本个数) / 10 = 0.6</p>
+<p>宏平均比微平均更合理，但也不是说微平均一无是处，具体使用哪种评测机制，还是要取决于数据集中样本分布</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;http://blog.csdn.net/u010551621/article/details/46907575&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CSDN的博主天才暴风的文章&lt;/a&gt;&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="Coding" scheme="https://sanmisanfan.github.io/categories/Coding/"/>
+    
+    
+      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Online algorithm(在线算法)小记</title>
+    <link href="https://sanmisanfan.github.io/2017/08/16/online-algorethm/"/>
+    <id>https://sanmisanfan.github.io/2017/08/16/online-algorethm/</id>
+    <published>2017-08-16T12:17:29.000Z</published>
+    <updated>2017-08-16T13:20:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在看<strong><a href="https://sanmisanfan.github.io/2017/08/15/deepwalk/">Deepwalk</a></strong>时发现这其实也是一种在线算法，刚好记录一篇笔记区别一下在线算法和离线算法。</p>
+<h2 id="1-在线算法"><a href="#1-在线算法" class="headerlink" title="1. 在线算法"></a>1. 在线算法</h2><p>在计算机科学中，一个在线算法是指它可以以序列化的方式一个个的处理输入，也就是说在开始时并不需要已经知道所有的输入。相对的，对于一个离线算法，在开始时就需要知道问题的所有输入数据，而且在解决一个问题后就要立即输出结果。例如，选择排序在排序前就需要知道所有待排序元素，然而插入排序就不必。因为在线算法并不知道整个的输入，所以它被迫做出的选择最后可能会被证明不是最优的，对在线算法的研究主要集中在当前环境下怎么做出选择。</p>
+<p><br><br></p>
+<p>对相同问题的在线算法和离线算法的对比分析形成了以上观点。如果想从其他角度了解在线算法可以看一下流算法（关注精确呈现过去的输入所使用的内存的量），动态算法（关注维护一个在线输入的结果所需要的时间复杂度）和在线机器学习。</p>
+<p><br><br></p>
+<p>一个很好的展示在线算法概念的例子是加拿大旅行者问题，这个问题的目标是在一个有权图中以最小的代价到达一个目标节点，但这个有权图中有些边是不可靠的，可能已经被剔除。然而一个旅行者只有到某个边的一个端点时才能确定该边是否已经被移除了。最坏情况下，该问题会变得简单，即所有的不确定的边都被移除该问题将会变成通常的最短路径问题。  </p>
+<h2 id="2-离线算法"><a href="#2-离线算法" class="headerlink" title="2. 离线算法"></a>2. 离线算法</h2><p>离线算法设计策略都是基于在执行算法前输入数据已知的基本假设，也就是说，对于一个离线算法，在开始时就需要知道问题的所有输入数据，而且在解决一个问题后就要立即输出结果，通常将这类具有问题完全信息前提下设计出的算法成为离线算法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在看&lt;strong&gt;&lt;a href=&quot;https://sanmisanfan.github.io/2017/08/15/deepwalk/&quot;&gt;Deepwalk&lt;/a&gt;&lt;/strong&gt;时发现这其实也是一种在线算法，刚好记录一篇笔记区别一下在线算法和离线算法。&lt;/p&gt;
+&lt;h2
+    
+    </summary>
+    
+      <category term="Coding" scheme="https://sanmisanfan.github.io/categories/Coding/"/>
+    
+    
+      <category term="Deepwalk" scheme="https://sanmisanfan.github.io/tags/Deepwalk/"/>
+    
+      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深夜闲谈</title>
+    <link href="https://sanmisanfan.github.io/2017/08/16/xiantan/"/>
+    <id>https://sanmisanfan.github.io/2017/08/16/xiantan/</id>
+    <published>2017-08-15T16:22:28.000Z</published>
+    <updated>2017-08-15T16:29:32.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果是几年前……累的时候喜欢乱七八糟写一堆东西来解压。<br>现在想试着曾经的方法，结果只有发会儿呆，然后看看时间赶紧睡觉。。<br>上学真好，读书真好。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;如果是几年前……累的时候喜欢乱七八糟写一堆东西来解压。&lt;br&gt;现在想试着曾经的方法，结果只有发会儿呆，然后看看时间赶紧睡觉。。&lt;br&gt;上学真好，读书真好。&lt;/p&gt;
+
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初探网络节点相关性计算之Deepwalk</title>
+    <link href="https://sanmisanfan.github.io/2017/08/15/deepwalk/"/>
+    <id>https://sanmisanfan.github.io/2017/08/15/deepwalk/</id>
+    <published>2017-08-15T02:02:19.000Z</published>
+    <updated>2017-08-15T02:28:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在自然语言处理、文本挖掘中，常常使用词向量作为单词（Word）内在含义的表达，从传统的向量表达到近几年的词嵌入（Word Embedding）表达，词向量已经作为一种文本的常用特征得到广泛应用。类似的，一些研究者希望通过网络结构中的连接关系，得到网络中顶点（vertex）的向量表示，作为基本特征应用到聚类、分类等任务上。</p>
+<h2 id="Deepwalk"><a href="#Deepwalk" class="headerlink" title="Deepwalk"></a>Deepwalk</h2><p><img src="http://ouomcr2nh.bkt.clouddn.com/deepwalk/post1/v2-ae31515f7ede6d605da949c90ffd5854_r.png" alt=""></p>
+<p>Deepwalk来源于《DeepWalk: Online Learning of Social Representations》这篇论文，它的思想非常简单，主要借鉴了word2vec，将网络结构通过Random walk的方式，转换为类似“sentence”的节点序列的形式。Word2Vec是Mikolov带领Google研发的用来产生词嵌入表达的模型，其中又包括skip-grams 或continuous-bag-of-words（CBOW）两种方式。</p>
+<p>在deepwalk的这篇论文中，为了说明网络结构中的节点和文本中的词具有可比性，作者根据对社交网络的图和Wikipedia中的文本进行分别统计，发现都遵循zipf’s定律，说明词和经过Random walk后图的节点，具有相似的特性。如下图所示：</p>
+<p><img src="http://ouomcr2nh.bkt.clouddn.com/deepwalk/post1/v2-037d8ef61d14509b0bbbcfdc310867ea_b.png" alt=""></p>
+<p>将网络结构转化为“sentence”序列后，以通过word2vec中的Skip-gram模型或者CBOW模型，训练得到每个节点的向量表示形式，进而可以用余弦距离或者欧式距离来求得两个节点之间的相似度。这篇论文采用了Skip-gram模型。</p>
+<p>Deepwalk算法描述，见下图。对图G，随机采样1个节点v，然后以此为起点连续采样，直到达到最大路径长度t，再通过Skip-gram来更新参数。<br><img src="http://ouomcr2nh.bkt.clouddn.com/deepwalk/post1/v2-f48082b1447372e67d373da45efd2484_b.png" alt=""></p>
+<p>Deepwalk实现很简单，在网络结构上主要考虑节点间是否存在连接的边，但是效果稳定，在评测数据上取得了很不错的效果，且代码健壮。在应用上deepwalk支持directed/undirected网络，原始代码不支持带权重的网络结构。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在自然语言处理、文本挖掘中，常常使用词向量作为单词（Word）内在含义的表达，从传统的向量表达到近几年的词嵌入（Word Embedding）表达，词向量已经作为一种文本的常用特征得到广泛应用。类似的，一些研究者希望通过网络结构中的连接关系，得到网络中顶点（vertex）的
+    
+    </summary>
+    
+      <category term="Deeplearning" scheme="https://sanmisanfan.github.io/categories/Deeplearning/"/>
+    
+    
+      <category term="Network Embedding" scheme="https://sanmisanfan.github.io/tags/Network-Embedding/"/>
+    
+      <category term="Deepwalk" scheme="https://sanmisanfan.github.io/tags/Deepwalk/"/>
+    
+      <category term="Word2vec" scheme="https://sanmisanfan.github.io/tags/Word2vec/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中文测试</title>
+    <link href="https://sanmisanfan.github.io/2017/08/11/test/"/>
+    <id>https://sanmisanfan.github.io/2017/08/11/test/</id>
+    <published>2017-08-11T09:08:53.000Z</published>
+    <updated>2017-08-15T06:46:44.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="这是一篇中文测试。"><a href="#这是一篇中文测试。" class="headerlink" title="这是一篇中文测试。"></a>这是一篇中文测试。</h2><p>也是一篇图片和banner的测试。</p>
+<p><img src="http://ok1dd68iw.bkt.clouddn.com/pizza.gif" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;这是一篇中文测试。&quot;&gt;&lt;a href=&quot;#这是一篇中文测试。&quot; class=&quot;headerlink&quot; title=&quot;这是一篇中文测试。&quot;&gt;&lt;/a&gt;这是一篇中文测试。&lt;/h2&gt;&lt;p&gt;也是一篇图片和banner的测试。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://sanmisanfan.github.io/2017/08/11/hello-world/"/>
+    <id>https://sanmisanfan.github.io/2017/08/11/hello-world/</id>
+    <published>2017-08-11T07:48:48.000Z</published>
+    <updated>2017-08-11T07:48:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
