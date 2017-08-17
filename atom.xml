@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanmisanfan.github.io/"/>
-  <updated>2017-08-16T13:34:42.000Z</updated>
+  <updated>2017-08-17T09:03:03.000Z</updated>
   <id>https://sanmisanfan.github.io/</id>
   
   <author>
@@ -20,28 +20,44 @@
     <link href="https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/"/>
     <id>https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/</id>
     <published>2017-08-16T13:11:03.000Z</published>
-    <updated>2017-08-16T13:34:42.000Z</updated>
+    <updated>2017-08-17T09:03:03.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转载自<a href="http://blog.csdn.net/u010551621/article/details/46907575" target="_blank" rel="external">CSDN的博主天才暴风的文章</a></p>
 </blockquote>
 <p>首先，论文中的表述如图：</p>
 <p><img src="http://img1.ph.126.net/4VmWjinIi_VUiHNTZwoM7Q==/2623065307984595647.jpg" alt=""></p>
-<p>通常，我们在评价classifier的性能时使用的是accuracy，考虑在多类分类的背景下<br><br><br>accuracy = (分类正确的样本个数) / (分类的所有样本个数)<br><br></p>
-<p>这样做其实看上去也挺不错的，不过可能会出现一个很严重的问题：例如某一个不透明的袋子里面装了1000台手机，其中有600台iphone6, 300台galaxy s6, 50台华为mate7,50台mx4(当然，这些信息分类器是不知道的。。。)。如果分类器只是简单的把所有的手机都预测为iphone6, 那么通过上面的公式计算的准确率accuracy为0.6，看起来还不错;可是三星，华为和小米的全部预测错了。如果再给一个袋子，里面装着600台galaxy s6, 300台mx4, 50台华为mate7,50台iphone，那这个分类器立马就爆炸了，连回家带孩子的要求都达不到<br><br><br>所以，仅仅用accuracy来衡量一个分类器的性能是很不科学的。为此，引入了宏平均(micro-average)的概念。介绍宏平均之前，还要介绍几个概念：<br><br></p>
+<p>通常，我们在评价classifier的性能时使用的是accuracy，考虑在多类分类的背景下</p>
+<p>accuracy = (分类正确的样本个数) / (分类的所有样本个数)</p>
+<p>这样做其实看上去也挺不错的，不过可能会出现一个很严重的问题：例如某一个不透明的袋子里面装了1000台手机，其中有600台iphone6, 300台galaxy s6, 50台华为mate7,50台mx4(当然，这些信息分类器是不知道的。。。)。如果分类器只是简单的把所有的手机都预测为iphone6, 那么通过上面的公式计算的准确率accuracy为0.6，看起来还不错;可是三星，华为和小米的全部预测错了。如果再给一个袋子，里面装着600台galaxy s6, 300台mx4, 50台华为mate7,50台iphone，那这个分类器立马就爆炸了，连回家带孩子的要求都达不到</p>
+<p>所以，仅仅用accuracy来衡量一个分类器的性能是很不科学的。为此，引入了宏平均(micro-average)的概念。介绍宏平均之前，还要介绍几个概念：</p>
 <ol>
 <li>precision(准确率，查准率)</li>
 <li>recall(召回率，查全率)</li>
-<li>F-measure<br><br><br>文字性的概念我就不水，我从符号上来表示一下吧：<br><br><br>多类分类问题中，分类结果一般有4种情况:</li>
+<li>F-measure</li>
 </ol>
+<p>文字性的概念我就不水，我从符号上来表示一下吧：</p>
+<p>多类分类问题中，分类结果一般有4种情况:</p>
 <ul>
 <li>属于类C的样本被正确分类到类C，记这一类样本数为 TP</li>
 <li>不属于类C的样本被错误分类到类C，记这一类样本数为 FP</li>
 <li>属于类别C的样本被错误分类到类C的其他类，记这一类样本数为 TN</li>
-<li>不属于类别C的样本被正确分类到了类别C的其他类，记这一类样本数为 FN<br><br><br>从字面意思上来说，某一类别C的准确率(查准率)可以理解为预测该类样本的准确性：</li>
+<li>不属于类别C的样本被正确分类到了类别C的其他类，记这一类样本数为 FN                     </li>
 </ul>
-<p>precision = TP / (TP + FP)<br><br><br>这里很好理解， TP+FP实际上就是分类器在分类时，预测为类别C的样本个数。<br><br><br>而某一个类别C的召回率(查全率)可以理解为，你预测正确的类别C的样本对于样本集中类别C的样本的覆盖程度，如果完全覆盖，那么recall就是100%<br><br><br>recall = TP / (TP + FN)<br><br><br>这里的TP+FN表示样本集中，真实类标为C的样本的个数<br>单一的用recall或者precision来评价分类器也是不合理的，譬如文章开头说到的那个简单的classifier<br><br><br>我们通过公式可以惊奇的发现在两个样本集上的recall都是100%，这是因为所有的iphone6样本，分类器都可以把它预测对，但是准确率就大不相同了；在第一个数据集上的准确率precision为0.6，但是第二个样本集上的准确率只有可怜的0.05；对于第二个样本集的结果，我可以说classifier很好，因为recall很高，也可以说classifier不好，因为precision很低。不过很明显，这些说法都是不合理的；综合考虑两种指标才是直观的比较可靠的指标。<br><br><br>现在就引入F-measure，计算公式如下<br><br><br>F- measure = (A + 1) <em> precision </em> recall / (A ^ 2 * precision + recall)</p>
-<p>（不知道怎么写公式，就直接用文字写的，感觉有点挫）<br><br><br>如果A取1，那么F-measure实际上就是precison和recall的调和平均值2<em>precision</em>recall / (precision + recall)， 此时的F-measure就称为F1值<br><br><br>把这些概念说了， 就回到刚才的宏平均的计算, 把所有类的F1值取一个算术平均就得到了Macro-average<br><br><br>微平均Micro-average=(TP + FP) / (TP + TN + FP + FN)<br><br><br>分母就是输入分类器的预测样本个数，分子就是预测正确的样本个数（无论类别), 微平均实际上就是在文章开头说的accuracy<br><br><br>写到这里就差不多了，最后以一个例子来收尾把</p>
+<p>从字面意思上来说，某一类别C的准确率(查准率)可以理解为预测该类样本的准确性：</p>
+<p>precision = TP / (TP + FP) </p>
+<p>这里很好理解， TP+FP实际上就是分类器在分类时，预测为类别C的样本个数。</p>
+<p>而某一个类别C的召回率(查全率)可以理解为，你预测正确的类别C的样本对于样本集中类别C的样本的覆盖程度，如果完全覆盖，那么recall就是100%</p>
+<p>recall = TP / (TP + FN)</p>
+<p>这里的TP+FN表示样本集中，真实类标为C的样本的个数<br>单一的用recall或者precision来评价分类器也是不合理的，譬如文章开头说到的那个简单的classifier</p>
+<p>我们通过公式可以惊奇的发现在两个样本集上的recall都是100%，这是因为所有的iphone6样本，分类器都可以把它预测对，但是准确率就大不相同了；在第一个数据集上的准确率precision为0.6，但是第二个样本集上的准确率只有可怜的0.05；对于第二个样本集的结果，我可以说classifier很好，因为recall很高，也可以说classifier不好，因为precision很低。不过很明显，这些说法都是不合理的；综合考虑两种指标才是直观的比较可靠的指标。</p>
+<p>现在就引入F-measure，计算公式如下</p>
+<p>F- measure = (A + 1) <em> precision </em> recall / (A ^ 2 * precision + recall)<br>（不知道怎么写公式，就直接用文字写的，感觉有点挫）</p>
+<p>如果A取1，那么F-measure实际上就是precison和recall的调和平均值2<em>precision</em>recall / (precision + recall)， 此时的F-measure就称为F1值</p>
+<p>把这些概念说了， 就回到刚才的宏平均的计算, 把所有类的F1值取一个算术平均就得到了Macro-average</p>
+<p>微平均Micro-average=(TP + FP) / (TP + TN + FP + FN)</p>
+<p>分母就是输入分类器的预测样本个数，分子就是预测正确的样本个数（无论类别), 微平均实际上就是在文章开头说的accuracy</p>
+<p>写到这里就差不多了，最后以一个例子来收尾把</p>
 <p>考虑现在输入分类器的样本有10个，他们属于类别A B C</p>
 <p>假设这10个样本的真实类标为（有序）和分类器预测的类标分别是： </p>
 <ul>
