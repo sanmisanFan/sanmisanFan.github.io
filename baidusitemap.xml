@@ -4,13 +4,15 @@
 
     
   <url>
-    <loc>https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/</loc>
-    <lastmod>2017-08-16T13:34:42.000Z</lastmod>
+    <loc>https://sanmisanfan.github.io/2017/08/16/online-algorethm/</loc>
+    <lastmod>2017-08-17T09:00:37.000Z</lastmod>
     <data>
         <display>
-        <title>多标签分类(Multi-label classification)性能评价中的宏平均(macro-average)与微平均(micro-average)</title>
-        <pubTime>2017-08-16T13:11:03.000Z</pubTime>
+        <title>Online algorithm(在线算法)小记</title>
+        <pubTime>2017-08-16T12:17:29.000Z</pubTime>
         
+        <tag>Deepwalk</tag>
+         
         <tag>Coding things</tag>
          
          
@@ -24,15 +26,13 @@
 
     
   <url>
-    <loc>https://sanmisanfan.github.io/2017/08/16/online-algorethm/</loc>
-    <lastmod>2017-08-16T13:20:35.000Z</lastmod>
+    <loc>https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/</loc>
+    <lastmod>2017-08-16T13:34:42.000Z</lastmod>
     <data>
         <display>
-        <title>Online algorithm(在线算法)小记</title>
-        <pubTime>2017-08-16T12:17:29.000Z</pubTime>
+        <title>多标签分类(Multi-label classification)性能评价中的宏平均(macro-average)与微平均(micro-average)</title>
+        <pubTime>2017-08-16T13:11:03.000Z</pubTime>
         
-        <tag>Deepwalk</tag>
-         
         <tag>Coding things</tag>
          
          
