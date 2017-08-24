@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanmisanfan.github.io/"/>
-  <updated>2017-08-17T09:03:03.000Z</updated>
+  <updated>2017-08-24T15:08:40.000Z</updated>
   <id>https://sanmisanfan.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Things gonna be changed</title>
+    <link href="https://sanmisanfan.github.io/2017/08/24/poston824/"/>
+    <id>https://sanmisanfan.github.io/2017/08/24/poston824/</id>
+    <published>2017-08-24T14:54:40.000Z</published>
+    <updated>2017-08-24T15:08:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>这段时间沉迷折腾各种网络嵌入的方法。不得不说非常喜欢且感恩这种可以一心去钻研一件事儿的机会。</p>
+<p>然而在另一方面，却始终无法避免人与人之间无聊且无谓的一些纠缠。<br>最近深刻的感受到“物以类聚，人以群分”这句话的意义。也近距离感受到人们无意识的恶意能对一个集体产生多么糟糕的影响。<br>看着充满恶念的小生灵挣扎在怨念贪嗔痴的尘世中，心里有的只是一种很难用语言表达的同情…或者堵得慌的悲伤。<br>不过也就是很短很短一小会儿，没有时间在这里停留。</p>
+<p>写报告写的头昏脑胀的。。写点别的什么乱七八糟的缓一缓。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;这段时间沉迷折腾各种网络嵌入的方法。不得不说非常喜欢且感恩这种可以一心去钻研一件事儿的机会。&lt;/p&gt;
+&lt;p&gt;然而在另一方面，却始终无法避免人与人之间无聊且无谓的一些纠缠。&lt;br&gt;最近深刻的感受到“物以类聚，人以群分”这句话的意义。也近距离感受到人们无意识的恶意能对一个集体产
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
   
   <entry>
     <title>多标签分类(Multi-label classification)性能评价中的宏平均(macro-average)与微平均(micro-average)</title>
