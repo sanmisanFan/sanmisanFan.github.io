@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://sanmisanfan.github.io/2017/09/05/cross-validation/</loc>
+    <lastmod>2017-09-05T15:39:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>Cross-Validation(交叉验证)</title>
+        <pubTime>2017-09-05T14:50:25.000Z</pubTime>
+        
+        <tag>Coding things</tag>
+         
+         
+           
+             
+              <breadCrumb title="Coding" url="https://sanmisanfan.github.io/categories/Coding/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://sanmisanfan.github.io/2017/09/04/can-we-copy-the-brain/</loc>
     <lastmod>2017-09-05T00:27:53.000Z</lastmod>
     <data>
@@ -71,9 +91,9 @@
         <title>Online algorithm(在线算法)小记</title>
         <pubTime>2017-08-16T12:17:29.000Z</pubTime>
         
-        <tag>Deepwalk</tag>
-         
         <tag>Coding things</tag>
+         
+        <tag>Deepwalk</tag>
          
          
            
