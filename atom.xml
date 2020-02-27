@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanmisanfan.github.io/"/>
-  <updated>2017-09-05T15:39:10.000Z</updated>
+  <updated>2017-09-14T08:18:26.000Z</updated>
   <id>https://sanmisanfan.github.io/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>Cross-Validation(交叉验证)</title>
     <link href="https://sanmisanfan.github.io/2017/09/05/cross-validation/"/>
     <id>https://sanmisanfan.github.io/2017/09/05/cross-validation/</id>
-    <published>2017-09-05T14:50:25.000Z</published>
-    <updated>2017-09-05T15:39:10.000Z</updated>
+    <published>2017-09-06T05:50:25.000Z</published>
+    <updated>2017-09-14T08:18:26.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>转载自<a href="http://blog.sina.com.cn/s/blog_688077cf0100zqpj.html" target="_blank" rel="external">bigdataage的博客</a><br><strong>交叉验证(Cross-Validation):</strong> 有时亦称循环估计， 是一种统计学上将数据样本切割成较小子集的实用方法。于是可以先在一个子集上做分析， 而其它子集则用来做后续对此分析的确认及验证。 一开始的子集被称为训练集。而其它的子集则被称为验证集或测试集。<a href="https://zh.wikipedia.org/zh-sg/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89" target="_blank" rel="external">WIKI</a></p>
@@ -76,7 +76,7 @@
     <title>Can We Copy The Brain?</title>
     <link href="https://sanmisanfan.github.io/2017/09/04/can-we-copy-the-brain/"/>
     <id>https://sanmisanfan.github.io/2017/09/04/can-we-copy-the-brain/</id>
-    <published>2017-09-04T15:30:23.000Z</published>
+    <published>2017-09-05T06:30:23.000Z</published>
     <updated>2017-09-05T00:27:53.000Z</updated>
     
     <content type="html"><![CDATA[<p>最近教授推荐阅读了IEEE SPECTRUM六月份的特刊，主题非常明确：我们能否制造出会像我们一样思考，具有智能的机器？换言之，我们能否在保留基于晶体管的硅基处理器强大计算能力的同时，使处理器拥有大脑的智慧。</p>
@@ -116,7 +116,7 @@
     <title>Things gonna be changed</title>
     <link href="https://sanmisanfan.github.io/2017/08/24/poston824/"/>
     <id>https://sanmisanfan.github.io/2017/08/24/poston824/</id>
-    <published>2017-08-24T14:54:40.000Z</published>
+    <published>2017-08-25T05:54:40.000Z</published>
     <updated>2017-08-24T15:08:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>这段时间沉迷折腾各种网络嵌入的方法。不得不说非常喜欢且感恩这种可以一心去钻研一件事儿的机会。</p>
@@ -142,7 +142,7 @@
     <title>多标签分类(Multi-label classification)性能评价中的宏平均(macro-average)与微平均(micro-average)</title>
     <link href="https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/"/>
     <id>https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/</id>
-    <published>2017-08-16T13:11:03.000Z</published>
+    <published>2017-08-17T04:11:03.000Z</published>
     <updated>2017-08-17T09:03:03.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
@@ -216,7 +216,7 @@
     <title>Online algorithm(在线算法)小记</title>
     <link href="https://sanmisanfan.github.io/2017/08/16/online-algorethm/"/>
     <id>https://sanmisanfan.github.io/2017/08/16/online-algorethm/</id>
-    <published>2017-08-16T12:17:29.000Z</published>
+    <published>2017-08-17T03:17:29.000Z</published>
     <updated>2017-08-17T09:00:37.000Z</updated>
     
     <content type="html"><![CDATA[<p>在看<strong><a href="https://sanmisanfan.github.io/2017/08/15/deepwalk/">Deepwalk</a></strong>时发现这其实也是一种在线算法，刚好记录一篇笔记区别一下在线算法和离线算法。</p>
@@ -236,9 +236,9 @@
       <category term="Coding" scheme="https://sanmisanfan.github.io/categories/Coding/"/>
     
     
-      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
-    
       <category term="Deepwalk" scheme="https://sanmisanfan.github.io/tags/Deepwalk/"/>
+    
+      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
     
   </entry>
   
@@ -246,7 +246,7 @@
     <title>深夜闲谈</title>
     <link href="https://sanmisanfan.github.io/2017/08/16/xiantan/"/>
     <id>https://sanmisanfan.github.io/2017/08/16/xiantan/</id>
-    <published>2017-08-15T16:22:28.000Z</published>
+    <published>2017-08-16T07:22:28.000Z</published>
     <updated>2017-08-15T16:29:32.000Z</updated>
     
     <content type="html"><![CDATA[<p>如果是几年前……累的时候喜欢乱七八糟写一堆东西来解压。<br>现在想试着曾经的方法，结果只有发会儿呆，然后看看时间赶紧睡觉。。<br>上学真好，读书真好。</p>
@@ -270,7 +270,7 @@
     <title>初探网络节点相关性计算之Deepwalk</title>
     <link href="https://sanmisanfan.github.io/2017/08/15/deepwalk/"/>
     <id>https://sanmisanfan.github.io/2017/08/15/deepwalk/</id>
-    <published>2017-08-15T02:02:19.000Z</published>
+    <published>2017-08-15T17:02:19.000Z</published>
     <updated>2017-08-15T02:28:40.000Z</updated>
     
     <content type="html"><![CDATA[<p>在自然语言处理、文本挖掘中，常常使用词向量作为单词（Word）内在含义的表达，从传统的向量表达到近几年的词嵌入（Word Embedding）表达，词向量已经作为一种文本的常用特征得到广泛应用。类似的，一些研究者希望通过网络结构中的连接关系，得到网络中顶点（vertex）的向量表示，作为基本特征应用到聚类、分类等任务上。</p>
@@ -304,7 +304,7 @@
     <title>中文测试</title>
     <link href="https://sanmisanfan.github.io/2017/08/11/test/"/>
     <id>https://sanmisanfan.github.io/2017/08/11/test/</id>
-    <published>2017-08-11T09:08:53.000Z</published>
+    <published>2017-08-12T00:08:53.000Z</published>
     <updated>2017-08-15T06:46:44.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="这是一篇中文测试。"><a href="#这是一篇中文测试。" class="headerlink" title="这是一篇中文测试。"></a>这是一篇中文测试。</h2><p>也是一篇图片和banner的测试。</p>
