@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://sanmisanfan.github.io/"/>
-  <updated>2017-09-14T08:18:26.000Z</updated>
+  <updated>2020-02-27T06:02:43.010Z</updated>
   <id>https://sanmisanfan.github.io/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>幻灭</title>
+    <link href="https://sanmisanfan.github.io/2020/02/26/damn2020/"/>
+    <id>https://sanmisanfan.github.io/2020/02/26/damn2020/</id>
+    <published>2020-02-27T05:33:59.000Z</published>
+    <updated>2020-02-27T06:02:43.010Z</updated>
+    
+    <content type="html"><![CDATA[<p>很久没有写过这样的blog了，我实在需要找个地方，自己瞎写点东西，把自己的问题给捋清楚。<br>2020年的开局，无论是宏观的，还是对于我微观的自己而言，无疑都是灾难。快两周了，直到现在，我的精神和大脑还在试图拒绝接受让我觉得有些魔幻的现实。我做梦，醒来往往分不清自己应该留在哪一边。直到看到手机，确认这已经不是以往的那个世界线，但是我必须面对。</p>
+<p>我搞不懂，我需要花时间把撞的粉碎的自己给拼回去。我有很多话想写，想问，但是于事无补。我不想理包，也不想收拾行李。这么一想，我甚至不知道时间怎么就到了26号。我的记忆仿佛从6号，就戛然而止。我睁眼就去工作，然后去跑步，跑到精疲力尽，没有力气思考的时候，就入睡，然后继续做梦，醒来。</p>
+<p>有时候突然感觉自己就明白了什么。有些东西也许从来自己就不配拥有，从来不。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;很久没有写过这样的blog了，我实在需要找个地方，自己瞎写点东西，把自己的问题给捋清楚。&lt;br&gt;2020年的开局，无论是宏观的，还是对于我微观的自己而言，无疑都是灾难。快两周了，直到现在，我的精神和大脑还在试图拒绝接受让我觉得有些魔幻的现实。我做梦，醒来往往分不清自己应该留
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
   
   <entry>
     <title>Cross-Validation(交叉验证)</title>
