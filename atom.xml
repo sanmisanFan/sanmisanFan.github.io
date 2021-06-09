@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Sanmisan&#39;s tree</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://sanmisanfan.github.io/"/>
+  <updated>2021-06-09T01:55:03.591Z</updated>
+  <id>https://sanmisanfan.github.io/</id>
+  
+  <author>
+    <name>Sanmisan Fan</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Keep updating the site would be a good idea?</title>
+    <link href="https://sanmisanfan.github.io/2021/06/08/self-rescue/"/>
+    <id>https://sanmisanfan.github.io/2021/06/08/self-rescue/</id>
+    <published>2021-06-09T01:54:15.000Z</published>
+    <updated>2021-06-09T01:55:03.591Z</updated>
+    
+    <content type="html"><![CDATA[<p>这里做个不错的笔记分享地方吧以后。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这里做个不错的笔记分享地方吧以后。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cross-Validation(交叉验证)</title>
+    <link href="https://sanmisanfan.github.io/2017/09/05/cross-validation/"/>
+    <id>https://sanmisanfan.github.io/2017/09/05/cross-validation/</id>
+    <published>2017-09-06T05:50:25.000Z</published>
+    <updated>2017-09-14T08:18:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>转载自<a href="http://blog.sina.com.cn/s/blog_688077cf0100zqpj.html" target="_blank" rel="noopener">bigdataage的博客</a><br><strong>交叉验证(Cross-Validation):</strong> 有时亦称循环估计， 是一种统计学上将数据样本切割成较小子集的实用方法。于是可以先在一个子集上做分析， 而其它子集则用来做后续对此分析的确认及验证。 一开始的子集被称为训练集。而其它的子集则被称为验证集或测试集。<a href="https://zh.wikipedia.org/zh-sg/%E4%BA%A4%E5%8F%89%E9%A9%97%E8%AD%89" target="_blank" rel="noopener">WIKI</a></p></blockquote><p>交叉验证对于人工智能，机器学习，模式识别，分类器等研究都具有很强的指导与验证意义。<br>基本思想是把在某种意义下将原始数据(dataset)进行分组,一部分做为训练集(train set),另一部分做为验证集(validation set or test set),首先用训练集对分类器进行训练,在利用验证集来测试训练得到的模型(model),以此来做为评价分类器的性能指标.</p><h2 id="三大交叉验证的方法"><a href="#三大交叉验证的方法" class="headerlink" title="三大交叉验证的方法"></a>三大交叉验证的方法</h2><p>1）Hold-Out Method</p><ul><li><strong>方法：</strong>将原始数据随机分为两组,一组做为训练集,一组做为验证集,利用训练集训练分类器,然后利用验证集验证模型,记录最后的分类准确率为此Hold-OutMethod下分类器的性能指标.。Hold-OutMethod相对于K-fold Cross Validation 又称Double cross-validation ，或相对K-CV称 2-fold cross-validation(2-CV)</li><li><strong>优点：</strong>好处的处理简单,只需随机把原始数据分为两组即可</li><li><strong>缺点：</strong>严格意义来说Hold-Out Method并不能算是CV,因为这种方法没有达到交叉的思想,由于是随机的将原始数据分组,所以最后验证集分类准确率的高低与原始数据的分组有很大的关系,所以这种方法得到的结果其实并不具有说服性.(主要原因是 训练集样本数太少，通常不足以代表母体样本的分布，导致 test 阶段辨识率容易出现明显落差。此外，2-CV 中一分为二的分子集方法的变异度大，往往无法达到「实验过程必须可以被复制」的要求。)</li></ul><p>2）K-fold Cross Validation(记为K-CV)</p><ul><li><strong>方法：</strong>作为Hold-Out Method的演进，将原始数据分成K组(一般是均分),将每个子集数据分别做一次验证集,其余的K-1组子集数据作为训练集,这样会得到K个模型,用这K个模型最终的验证集的分类准确率的平均数作为此K-CV下分类器的性能指标.K一般大于等于2,实际操作时一般从3开始取,只有在原始数据集合数据量小的时候才会尝试取2. 而K-CV 的实验共需要建立 k 个models，并计算 k 次 test sets 的平均辨识率。在实作上，k 要够大才能使各回合中的 训练样本数够多，一般而言 k=10 (作为一个经验参数)算是相当足够了。</li><li><strong>优点：</strong>K-CV可以有效的避免过学习以及欠学习状态的发生,最后得到的结果也比较具有说服性.</li><li><strong>缺点：</strong>有待补充</li></ul><p>3）Leave-One-Out Cross Validation(记为LOO-CV)</p><ul><li><strong>方法：</strong>如果设原始数据有N个样本,那么LOO-CV就是N-CV,即每个样本单独作为验证集,其余的N-1个样本作为训练集,所以LOO-CV会得到N个模型,用这N个模型最终的验证集的分类准确率的平均数作为此下LOO-CV分类器的性能指标.</li><li><strong>优点：</strong>相比于前面的K-CV,LOO-CV有两个明显的优点：<strong>a.</strong>每一回合中几乎所有的样本皆用于训练模型,因此最接近原始样本的分布,这样评估所得的结果比较可靠。<strong>b.</strong> 实验过程中没有随机因素会影响实验数据,确保实验过程是可以被复制的.</li><li><strong>缺点：</strong>计算成本高,因为需要建立的模型数量与原始数据样本数量相同,当原始数据样本数量相当多时,LOO-CV在实作上便有困难几乎就是不显示,除非每次训练分类器得到模型的速度很快,或是可以用并行化计算减少计算所需的时间.</li></ul><p>在模式识别与机器学习的相关研究中，经常会将 数据集分为 训练集与测试集 这两个子集，前者用以建立 模式，后者则用来评估该 模式对未知样本进行预测时的精确度，正规的说法是 generalization ability(泛化能力)</p><h2 id="交叉验证核心原则"><a href="#交叉验证核心原则" class="headerlink" title="交叉验证核心原则"></a>交叉验证核心原则</h2><p>Cross-validation 是为了有效的估测 generalization error 所设计的实验方法，只有训练集才可以用在 模式的训练过程中，测试集 则必须在模式完成之后才被用来评估 模式优劣的依据。</p><ul><li>常见的错误运用：许多人在研究都有用到 Evolutionary Algorithms(EA,遗传算法)与 classifiers，所使用的 Fitness Function (适应度函数)中通常都有用到 classifier 的辨识率，然而把Cross-Validation 用错的案例还不少。前面说过，只有 training data 才可以用于 model 的建构，所以只有 training data 的辨识率才可以用在 fitness function 中。而 EA 是训练过程用来调整 model 最佳参数的方法，所以只有在 EA结束演化后，model 参数已经固定了，这时候才可以使用 test data。</li><li>EA 与 CV结合研究方法： Cross-Validation 的本质是用来估测某个 classification method 对一组 dataset 的 generalization error，不是用来设计 classifier 的方法，所以 Cross-Validation 不能用在 EA的 fitness function 中，因为与 fitness function 有关的样本都属于 training set，那试问哪些样本才是 test set 呢？如果某个 fitness function 中用了Cross-Validation 的 training 或 test 辨识率，那么这样的实验方法已经不能称为 Cross-Validation</li><li>EA 与 k-CV 正确的搭配方法：是将 dataset 分成 k 等份的 subsets 后，每次取 1份 subset 作为 test set，其余 k-1 份作为 training set，并且将该组 training set 套用到 EA 的 fitness function 计算中(至于该 training set 如何进一步利用则没有限制)。因此，正确的 k-CV 会进行共 k 次的 EA 演化，建立 k 个classifiers。而 k-CV 的 test 辨识率，则是 k 组 test sets 对应到 EA 训练所得的 k 个 classifiers 辨识率之平均值.</li></ul><h2 id="数据集分割原则"><a href="#数据集分割原则" class="headerlink" title="数据集分割原则"></a>数据集分割原则</h2><p>交叉验证在，原始数据集分割为训练集与测试集，必须遵守两个要点：</p><ol><li>训练集中样本数量必须够多，一般至少大于总样本数的 50%。</li><li>两组子集必须从完整集合中均匀取样。<br>其中第 2 点特别重要，均匀取样的目的是希望减少 训练集/测试集 与完整集合之间的偏差(bias)，但却也不易做到。一般的作法是随机取样，当样本数量足够时，便可达到均匀取样的效果。然而随机也正是此作法的盲点，也是经常是可以在数据上做手脚的地方。举例来说，当辨识率不理想时，便重新取样一组训练集 与测试集，直到测试集的辨识率满意为止，但严格来说便算是作弊。</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;http://blog.sina.com.cn/s/blog_688077cf0100zqpj.html&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;bigdataage的博客&lt;/a&gt;&lt;br&gt;&lt;stron
+      
+    
+    </summary>
+    
+      <category term="Coding" scheme="https://sanmisanfan.github.io/categories/Coding/"/>
+    
+    
+      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Can We Copy The Brain?</title>
+    <link href="https://sanmisanfan.github.io/2017/09/04/can-we-copy-the-brain/"/>
+    <id>https://sanmisanfan.github.io/2017/09/04/can-we-copy-the-brain/</id>
+    <published>2017-09-05T06:30:23.000Z</published>
+    <updated>2020-02-27T05:05:24.468Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近教授推荐阅读了IEEE SPECTRUM六月份的特刊，主题非常明确：我们能否制造出会像我们一样思考，具有智能的机器？换言之，我们能否在保留基于晶体管的硅基处理器强大计算能力的同时，使处理器拥有大脑的智慧。</p><p>特刊中的文章对人工智能的定义分为两个阶段。首先是具备真正意义上智能的“功能”，比如使机器具备人类的学习能力，抽象能力，推理能力，归纳能力等等。可参考<a href="https://spectrum.ieee.org/computing/software/what-intelligent-machines-need-to-learn-from-the-neocortex" target="_blank" rel="noopener">What Intelligent Machines Need to Learn From the Neocortex</a>这篇文章的详述。在这之上，机器是否有一天可以真正具有“智慧”，暨自己的情感，思考，意识和自我认知等作为一个智慧生命个体所必备的要素这些内容则在<a href="https://spectrum.ieee.org/computing/hardware/can-we-quantify-machine-consciousness" target="_blank" rel="noopener">Can We Quantify Machine Consciousness?</a><br>这篇文章中进行了讨论。</p><blockquote><p>有关本期特刊的全部文章可以在<a href="https://spectrum.ieee.org/static/special-report-can-we-copy-the-brain" target="_blank" rel="noopener">IEEE SPECTRUM</a>免费阅读。</p></blockquote><p>作为一个赛博朋克迷，在读完本刊之后，发现所研究的领域可以引领我到达的方向（尽管遥远）就是我从小精神内核里最中二的那个幻想的时候，那种兴奋是难以言表的。尤其是研究生毕业以后几经折腾，总算是确定了未来相当长一段时间内(但愿是终身)所投身的方向。在还有几分钟就又要老一岁的特殊时间里，还是不由得会感慨一下，能有现在这样的环境和时间来使用深度学习中的模型方法作为工具，来一点一点探索拓展自己领域里的知识疆界，哪怕极度微小但却有机会实实在在给技术和行业的进步贡献一点点微弱的力量，这真是最好的生日礼物了。</p><p>尽管目前的方向更多的是基于使用深度学习的各种方法来探索网络表征和其他基于社会网络的研究探索，看似好像没有图像识别、自动驾驶或者机器人相关领域的“人工智能”来的直观，然而仿生的“智能”学习和推理认知能力配合计算机强大的算计能力，才是挖掘蕴含着庞大信息网络的法宝。</p><p>人脑有着许多计算机领域研究人员梦寐以求的强大能力，比如无与伦比的学习速度能学习能力。举个例子，大部分人可以仅仅通过粗略的看几张长颈鹿的照片，便可以没什么难度的识别出各种场合和形态的长颈鹿目标，甚至是是一个画风比较抽象的卡通长颈鹿或者博物馆的长颈鹿骨架。这种能力在目前的深度学习图像识别中是不可想像的。人脑可以轻松的把看到的2D对象在脑内3D化建模（目前的图像处理算法也实现了2D转3D建模，不过能力、精度、效率和能耗与人脑完全不可相提并论）。依靠人脑内的新皮层(Neocortex)等复杂神经网络组织，大脑具备了包括学习，记忆，推理等高级功能，而这些功能最终在某些机制(此处学界尚有争论)的作用下，形成了我们之所以为智慧生物的根本——自我认知与自我意识。目前针对大脑结构，尤其是新皮层(Neocortex)和其中的连接体(connectome)的研究，神经学家与计算机科学家们开始研究用特殊的软硬件来模拟脑内神经连接和沟通的方式。这个领域叫做Neuromorphic(神经形态)，通过模拟人脑所创造的新型计算机处理器称之为Neuromorphic Chips。具体可以参考<a href="https://spectrum.ieee.org/semiconductors/design/neuromorphic-chips-are-destined-for-deep-learningor-obscurity" target="_blank" rel="noopener">Neuromorphic Chips Are Destined for Deep Learning—or Obscurity</a>这篇文章。</p><p>目前Neuromorphic还是一个非常前沿的领域，有太多的问题等待去攻克。人脑 —— 这个在我们头骨保护中的平均1.3千克重的复杂神经组织，消耗着我们人体大概全部新陈代谢总量的20%的能量来维持运转。以基准新陈代谢产生<a href="https://hypertextbook.com/facts/2001/JacquelineLing.shtml" target="_blank" rel="noopener">100watts能量</a>来计算，我们每个人相当于装备了一个20watt功耗的超级电脑！要考虑到现在最强大的超级电脑能耗都在2千万watt上下，尽管如此耗能，硅基冯诺伊曼架构的计算机却完全无法赶上人脑除了数学计算外的其他能力。</p><p><a href="https://spectrum.ieee.org/computing/hardware/can-we-quantify-machine-consciousness" target="_blank" rel="noopener">Can We Quantify Machine Consciousness?</a>这篇文章深化了何为“智能”这个问题。哪怕是计算机完美实现了上文中人脑的大部分功能，我们依然无法说它对外界信息的刺激有任何的主观感受，换言之，计算机尽管功能逐渐发展的十分强大，它依然不具备“智慧”，不具备自我意识。这篇文章结合computationalism(计算主义)和由此诞生的computational theory of mind（心灵计算理论）辩证地阐述了人工智能与机器自我意识间的相互联系，值得一读。</p><p>零零散散说了这些，其实非常的宽泛和浅显。真正产生价值的知识和研究还需要定下心一步一步来。最后值得一提的是，学界内部对于机器学习，再说宽泛一些，对于人工智能的态度是相对非常理智且冷静的。毕竟从50年代开始，所谓的“人工智能”一路大起大落，被舆论追捧又被舆论嘲弄不是一次了。目前人工智能这个大类在06年之后乘着Hinton等人深度学习的东风焕发第三春，不过随着研究的深入，计算能力和能耗逐渐还是会成为一定的瓶颈。基于Neuromorphic Chips的新型适配机器学习等特殊任务的人工智能芯片或者传说中的量子计算机也许会成为这个领域新的强心剂。</p><p>国内现在社交网络和媒体铺天盖地的人工智能，颇有前两年一切东西都弄的“云里物里”(云计算+物联网)的浮夸风范。当然了，本来就很有前景的东西在一些不懂行却敢说的营销人眼中，巴不得把泥娃娃吹成孙大圣，何况目前的技术比泥娃娃强太多了LoL…全民的关注固然能促进领域内人才的集中和经费还有研究转化能力的提升，但是现在是个公司，随便用现成框架做个极度普通的数据分析配合一个可视化插件都敢说是人工智能，这难免有挂羊头卖狗肉之嫌。</p><p>综上所述，从研究角度出发，许多的研究人员都想着不断逼近现有计算机架构的底线，跨学科结合生物学(Neuromorphic Chips)来使得计算机更适合机器学习乃至整个领域的计算需求。这也算是我这段时间体会的一个小结，继续加油吧。生日快乐。</p><p><img src="https://s2.ax1x.com/2020/02/27/3dyJSO.gif" alt="CyberPunk"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;最近教授推荐阅读了IEEE SPECTRUM六月份的特刊，主题非常明确：我们能否制造出会像我们一样思考，具有智能的机器？换言之，我们能否在保留基于晶体管的硅基处理器强大计算能力的同时，使处理器拥有大脑的智慧。&lt;/p&gt;
+&lt;p&gt;特刊中的文章对人工智能的定义分为两个阶段。首先是具
+      
+    
+    </summary>
+    
+      <category term="AI" scheme="https://sanmisanfan.github.io/categories/AI/"/>
+    
+    
+      <category term="AI" scheme="https://sanmisanfan.github.io/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Things gonna be changed</title>
+    <link href="https://sanmisanfan.github.io/2017/08/24/poston824/"/>
+    <id>https://sanmisanfan.github.io/2017/08/24/poston824/</id>
+    <published>2017-08-25T05:54:40.000Z</published>
+    <updated>2020-02-27T05:06:58.810Z</updated>
+    
+    <content type="html"><![CDATA[<p>这段时间沉迷折腾各种网络嵌入的方法。不得不说非常喜欢且感恩这种可以一心去钻研一件事儿的机会。</p><p>然而在另一方面，却始终无法避免人与人之间无聊且无谓的一些纠缠。<br>最近深刻的感受到“物以类聚，人以群分”这句话的意义。也近距离感受到人们无意识的恶意能对一个集体产生多么糟糕的影响。<br>看着充满恶念的小生灵挣扎在怨念贪嗔痴的尘世中，心里有的只是一种很难用语言表达的同情…或者堵得慌的悲伤。<br>不过也就是很短很短一小会儿，没有时间在这里停留。</p><p>写报告写的头昏脑胀的。。写点别的什么乱七八糟的缓一缓。。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;这段时间沉迷折腾各种网络嵌入的方法。不得不说非常喜欢且感恩这种可以一心去钻研一件事儿的机会。&lt;/p&gt;
+&lt;p&gt;然而在另一方面，却始终无法避免人与人之间无聊且无谓的一些纠缠。&lt;br&gt;最近深刻的感受到“物以类聚，人以群分”这句话的意义。也近距离感受到人们无意识的恶意能对一个集体产
+      
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>多标签分类(Multi-label classification)性能评价中的宏平均(macro-average)与微平均(micro-average)</title>
+    <link href="https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/"/>
+    <id>https://sanmisanfan.github.io/2017/08/16/mulitlable-classification/</id>
+    <published>2017-08-17T04:11:03.000Z</published>
+    <updated>2017-08-17T09:03:03.000Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>转载自<a href="http://blog.csdn.net/u010551621/article/details/46907575" target="_blank" rel="noopener">CSDN的博主天才暴风的文章</a></p></blockquote><p>首先，论文中的表述如图：</p><p><img src="http://img1.ph.126.net/4VmWjinIi_VUiHNTZwoM7Q==/2623065307984595647.jpg" alt=""></p><p>通常，我们在评价classifier的性能时使用的是accuracy，考虑在多类分类的背景下</p><p>accuracy = (分类正确的样本个数) / (分类的所有样本个数)</p><p>这样做其实看上去也挺不错的，不过可能会出现一个很严重的问题：例如某一个不透明的袋子里面装了1000台手机，其中有600台iphone6, 300台galaxy s6, 50台华为mate7,50台mx4(当然，这些信息分类器是不知道的。。。)。如果分类器只是简单的把所有的手机都预测为iphone6, 那么通过上面的公式计算的准确率accuracy为0.6，看起来还不错;可是三星，华为和小米的全部预测错了。如果再给一个袋子，里面装着600台galaxy s6, 300台mx4, 50台华为mate7,50台iphone，那这个分类器立马就爆炸了，连回家带孩子的要求都达不到</p><p>所以，仅仅用accuracy来衡量一个分类器的性能是很不科学的。为此，引入了宏平均(micro-average)的概念。介绍宏平均之前，还要介绍几个概念：</p><ol><li>precision(准确率，查准率)</li><li>recall(召回率，查全率)</li><li>F-measure</li></ol><p>文字性的概念我就不水，我从符号上来表示一下吧：</p><p>多类分类问题中，分类结果一般有4种情况:</p><ul><li>属于类C的样本被正确分类到类C，记这一类样本数为 TP</li><li>不属于类C的样本被错误分类到类C，记这一类样本数为 FP</li><li>属于类别C的样本被错误分类到类C的其他类，记这一类样本数为 TN</li><li>不属于类别C的样本被正确分类到了类别C的其他类，记这一类样本数为 FN                     </li></ul><p>从字面意思上来说，某一类别C的准确率(查准率)可以理解为预测该类样本的准确性：</p><p>precision = TP / (TP + FP) </p><p>这里很好理解， TP+FP实际上就是分类器在分类时，预测为类别C的样本个数。</p><p>而某一个类别C的召回率(查全率)可以理解为，你预测正确的类别C的样本对于样本集中类别C的样本的覆盖程度，如果完全覆盖，那么recall就是100%</p><p>recall = TP / (TP + FN)</p><p>这里的TP+FN表示样本集中，真实类标为C的样本的个数<br>单一的用recall或者precision来评价分类器也是不合理的，譬如文章开头说到的那个简单的classifier</p><p>我们通过公式可以惊奇的发现在两个样本集上的recall都是100%，这是因为所有的iphone6样本，分类器都可以把它预测对，但是准确率就大不相同了；在第一个数据集上的准确率precision为0.6，但是第二个样本集上的准确率只有可怜的0.05；对于第二个样本集的结果，我可以说classifier很好，因为recall很高，也可以说classifier不好，因为precision很低。不过很明显，这些说法都是不合理的；综合考虑两种指标才是直观的比较可靠的指标。</p><p>现在就引入F-measure，计算公式如下</p><p>F- measure = (A + 1) <em> precision </em> recall / (A ^ 2 * precision + recall)<br>（不知道怎么写公式，就直接用文字写的，感觉有点挫）</p><p>如果A取1，那么F-measure实际上就是precison和recall的调和平均值2<em>precision</em>recall / (precision + recall)， 此时的F-measure就称为F1值</p><p>把这些概念说了， 就回到刚才的宏平均的计算, 把所有类的F1值取一个算术平均就得到了Macro-average</p><p>微平均Micro-average=(TP + FP) / (TP + TN + FP + FN)</p><p>分母就是输入分类器的预测样本个数，分子就是预测正确的样本个数（无论类别), 微平均实际上就是在文章开头说的accuracy</p><p>写到这里就差不多了，最后以一个例子来收尾把</p><p>考虑现在输入分类器的样本有10个，他们属于类别A B C</p><p>假设这10个样本的真实类标为（有序）和分类器预测的类标分别是： </p><ul><li><p>真实：A A A C B C A B B C</p></li><li><p>预测：A A C B A C A C B C</p></li></ul><p>precision(A) = 3(正确预测为A类的样本个数为3) / 4(预测为A类的样本数为4) = 0.75  recall(A) = 3 / 4(真实A类样本有4个) = 0.75  </p><p>precision(B) = 1 / 2 = 0.5   recall(B) = 1 / 3 = 0.3333</p><p>precision(C) = 2 / 4 = 0.5  recall(C) = 2 / 3 = 0.6667</p><p>F值计算出来之后，取算术平均就是Macro-average</p><p>Micro-average = 6(预测正确的样本个数) / 10 = 0.6</p><p>宏平均比微平均更合理，但也不是说微平均一无是处，具体使用哪种评测机制，还是要取决于数据集中样本分布</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;转载自&lt;a href=&quot;http://blog.csdn.net/u010551621/article/details/46907575&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;CSDN的博主天才暴风的文章&lt;/a&gt;&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="Coding" scheme="https://sanmisanfan.github.io/categories/Coding/"/>
+    
+    
+      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Online algorithm(在线算法)小记</title>
+    <link href="https://sanmisanfan.github.io/2017/08/16/online-algorethm/"/>
+    <id>https://sanmisanfan.github.io/2017/08/16/online-algorethm/</id>
+    <published>2017-08-17T03:17:29.000Z</published>
+    <updated>2017-08-17T09:00:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在看<strong><a href="https://sanmisanfan.github.io/2017/08/15/deepwalk/">Deepwalk</a></strong>时发现这其实也是一种在线算法，刚好记录一篇笔记区别一下在线算法和离线算法。</p><h2 id="1-在线算法"><a href="#1-在线算法" class="headerlink" title="1. 在线算法"></a>1. 在线算法</h2><p>在计算机科学中，一个在线算法是指它可以以序列化的方式一个个的处理输入，也就是说在开始时并不需要已经知道所有的输入。相对的，对于一个离线算法，在开始时就需要知道问题的所有输入数据，而且在解决一个问题后就要立即输出结果。例如，选择排序在排序前就需要知道所有待排序元素，然而插入排序就不必。因为在线算法并不知道整个的输入，所以它被迫做出的选择最后可能会被证明不是最优的，对在线算法的研究主要集中在当前环境下怎么做出选择。</p><p>对相同问题的在线算法和离线算法的对比分析形成了以上观点。如果想从其他角度了解在线算法可以看一下流算法（关注精确呈现过去的输入所使用的内存的量），动态算法（关注维护一个在线输入的结果所需要的时间复杂度）和在线机器学习。</p><p>一个很好的展示在线算法概念的例子是加拿大旅行者问题，这个问题的目标是在一个有权图中以最小的代价到达一个目标节点，但这个有权图中有些边是不可靠的，可能已经被剔除。然而一个旅行者只有到某个边的一个端点时才能确定该边是否已经被移除了。最坏情况下，该问题会变得简单，即所有的不确定的边都被移除该问题将会变成通常的最短路径问题。  </p><h2 id="2-离线算法"><a href="#2-离线算法" class="headerlink" title="2. 离线算法"></a>2. 离线算法</h2><p>离线算法设计策略都是基于在执行算法前输入数据已知的基本假设，也就是说，对于一个离线算法，在开始时就需要知道问题的所有输入数据，而且在解决一个问题后就要立即输出结果，通常将这类具有问题完全信息前提下设计出的算法成为离线算法。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在看&lt;strong&gt;&lt;a href=&quot;https://sanmisanfan.github.io/2017/08/15/deepwalk/&quot;&gt;Deepwalk&lt;/a&gt;&lt;/strong&gt;时发现这其实也是一种在线算法，刚好记录一篇笔记区别一下在线算法和离线算法。&lt;/p&gt;
+&lt;h2
+      
+    
+    </summary>
+    
+      <category term="Coding" scheme="https://sanmisanfan.github.io/categories/Coding/"/>
+    
+    
+      <category term="Coding things" scheme="https://sanmisanfan.github.io/tags/Coding-things/"/>
+    
+      <category term="Deepwalk" scheme="https://sanmisanfan.github.io/tags/Deepwalk/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>深夜闲谈</title>
+    <link href="https://sanmisanfan.github.io/2017/08/16/xiantan/"/>
+    <id>https://sanmisanfan.github.io/2017/08/16/xiantan/</id>
+    <published>2017-08-16T07:22:28.000Z</published>
+    <updated>2020-02-27T05:08:12.625Z</updated>
+    
+    <content type="html"><![CDATA[<p>如果是几年前……累的时候喜欢乱七八糟写一堆东西来解压。<br>现在想试着曾经的方法，结果只有发会儿呆，然后看看时间赶紧睡觉。。<br>上学真好，读书真好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如果是几年前……累的时候喜欢乱七八糟写一堆东西来解压。&lt;br&gt;现在想试着曾经的方法，结果只有发会儿呆，然后看看时间赶紧睡觉。。&lt;br&gt;上学真好，读书真好。&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>初探网络节点相关性计算之Deepwalk</title>
+    <link href="https://sanmisanfan.github.io/2017/08/15/deepwalk/"/>
+    <id>https://sanmisanfan.github.io/2017/08/15/deepwalk/</id>
+    <published>2017-08-15T17:02:19.000Z</published>
+    <updated>2017-08-15T02:28:40.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在自然语言处理、文本挖掘中，常常使用词向量作为单词（Word）内在含义的表达，从传统的向量表达到近几年的词嵌入（Word Embedding）表达，词向量已经作为一种文本的常用特征得到广泛应用。类似的，一些研究者希望通过网络结构中的连接关系，得到网络中顶点（vertex）的向量表示，作为基本特征应用到聚类、分类等任务上。</p><h2 id="Deepwalk"><a href="#Deepwalk" class="headerlink" title="Deepwalk"></a>Deepwalk</h2><p><img src="http://ouomcr2nh.bkt.clouddn.com/deepwalk/post1/v2-ae31515f7ede6d605da949c90ffd5854_r.png" alt=""></p><p>Deepwalk来源于《DeepWalk: Online Learning of Social Representations》这篇论文，它的思想非常简单，主要借鉴了word2vec，将网络结构通过Random walk的方式，转换为类似“sentence”的节点序列的形式。Word2Vec是Mikolov带领Google研发的用来产生词嵌入表达的模型，其中又包括skip-grams 或continuous-bag-of-words（CBOW）两种方式。</p><p>在deepwalk的这篇论文中，为了说明网络结构中的节点和文本中的词具有可比性，作者根据对社交网络的图和Wikipedia中的文本进行分别统计，发现都遵循zipf’s定律，说明词和经过Random walk后图的节点，具有相似的特性。如下图所示：</p><p><img src="http://ouomcr2nh.bkt.clouddn.com/deepwalk/post1/v2-037d8ef61d14509b0bbbcfdc310867ea_b.png" alt=""></p><p>将网络结构转化为“sentence”序列后，以通过word2vec中的Skip-gram模型或者CBOW模型，训练得到每个节点的向量表示形式，进而可以用余弦距离或者欧式距离来求得两个节点之间的相似度。这篇论文采用了Skip-gram模型。</p><p>Deepwalk算法描述，见下图。对图G，随机采样1个节点v，然后以此为起点连续采样，直到达到最大路径长度t，再通过Skip-gram来更新参数。<br><img src="http://ouomcr2nh.bkt.clouddn.com/deepwalk/post1/v2-f48082b1447372e67d373da45efd2484_b.png" alt=""></p><p>Deepwalk实现很简单，在网络结构上主要考虑节点间是否存在连接的边，但是效果稳定，在评测数据上取得了很不错的效果，且代码健壮。在应用上deepwalk支持directed/undirected网络，原始代码不支持带权重的网络结构。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在自然语言处理、文本挖掘中，常常使用词向量作为单词（Word）内在含义的表达，从传统的向量表达到近几年的词嵌入（Word Embedding）表达，词向量已经作为一种文本的常用特征得到广泛应用。类似的，一些研究者希望通过网络结构中的连接关系，得到网络中顶点（vertex）的
+      
+    
+    </summary>
+    
+      <category term="Deeplearning" scheme="https://sanmisanfan.github.io/categories/Deeplearning/"/>
+    
+    
+      <category term="Network Embedding" scheme="https://sanmisanfan.github.io/tags/Network-Embedding/"/>
+    
+      <category term="Deepwalk" scheme="https://sanmisanfan.github.io/tags/Deepwalk/"/>
+    
+      <category term="Word2vec" scheme="https://sanmisanfan.github.io/tags/Word2vec/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>中文测试</title>
+    <link href="https://sanmisanfan.github.io/2017/08/11/test/"/>
+    <id>https://sanmisanfan.github.io/2017/08/11/test/</id>
+    <published>2017-08-12T00:08:53.000Z</published>
+    <updated>2020-02-27T05:07:10.220Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="这是一篇中文测试。"><a href="#这是一篇中文测试。" class="headerlink" title="这是一篇中文测试。"></a>这是一篇中文测试。</h2><p>也是一篇图片和banner的测试。</p><p><img src="http://ok1dd68iw.bkt.clouddn.com/pizza.gif" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;这是一篇中文测试。&quot;&gt;&lt;a href=&quot;#这是一篇中文测试。&quot; class=&quot;headerlink&quot; title=&quot;这是一篇中文测试。&quot;&gt;&lt;/a&gt;这是一篇中文测试。&lt;/h2&gt;&lt;p&gt;也是一篇图片和banner的测试。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://
+      
+    
+    </summary>
+    
+      <category term="others" scheme="https://sanmisanfan.github.io/categories/others/"/>
+    
+    
+      <category term="chitchat" scheme="https://sanmisanfan.github.io/tags/chitchat/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://sanmisanfan.github.io/2017/08/11/hello-world/"/>
+    <id>https://sanmisanfan.github.io/2017/08/11/hello-world/</id>
+    <published>2017-08-11T07:48:48.000Z</published>
+    <updated>2017-08-11T07:48:48.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
