@@ -15,7 +15,7 @@ authors:
   - Arlen Fan*
   - Fan Lei*
   - Michelle Mancenido
-  - Alan M. Maceachren
+  - Alan M. MacEachren
   - Ross Maciejewski
 links:
   Paper: https://dl.acm.org/doi/full/10.1145/3613904.3642132

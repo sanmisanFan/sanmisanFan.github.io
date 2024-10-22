@@ -1,7 +1,7 @@
 ---
 title:          "Catching Dynamic Heterogeneous User Data for Identity Linkage Learning"
 date:           2018-07-08 00:01:00 +0800
-selected:       true
+selected:       false
 pub:            "International Joint Conference on Neural Networks (IJCNN 2018)"
 pub_date:       "2018"
 abstract: >-
