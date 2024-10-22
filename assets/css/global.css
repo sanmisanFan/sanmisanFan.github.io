@@ -82,3 +82,9 @@ div.lazy {
         border-color: orange
     }
 }
+
+.secondName {
+    font-family: Cursive;
+    font-size: 50%;
+    color:darkgrey;
+}
