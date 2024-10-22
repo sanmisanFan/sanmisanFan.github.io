@@ -19,6 +19,6 @@ authors:
   - Ross Maciejewski
 links:
   Paper: https://dl.acm.org/doi/full/10.1145/3613904.3642132
-  arXiv: https://arxiv.org/abs/2403.08260
+  arXiv: https://dl.acm.org/doi/pdf/10.1145/3613904.3642132
   Presentation: https://youtu.be/m2y69bfE4D8?si=inCuDmGSOZf6QBOh
 ---
