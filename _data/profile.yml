@@ -9,7 +9,7 @@ positions:
 
 
 email: "Fan.Lei@asu.edu"
-# cv_link: link-to-your-cv-file
+cv_link: /assets/files/FanLei_CV.pdf
 gscholar: FE6I5jIAAAAJ  # This is an example, replace it with your own Google Scholar ID
 github: sanmisanFan
 #twitter: sanmisanfan.bsky.social  # Do not include the '@' symbol
@@ -31,7 +31,7 @@ short_bio: >-
     I am also a long-term full-stack developer specializing in web-based applications. Before joining the VADER Lab, I worked for five years as a software engineer in industrial companies.
   </p>
 
-portrait_url: /assets/images/photos/fanlei.jpg
+portrait_url: /assets/images/photos/fanlei.f6a78a83.jpeg
 portrait_caption: >-
   Photo from Fan Lei's Bachelor's graduation ceremony.
 
