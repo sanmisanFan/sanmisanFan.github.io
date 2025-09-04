@@ -1,7 +1,7 @@
 ---
 title:          "GeoLinter: A Linting Framework for Choropleth Maps"
 date:           2023-10-06 00:01:00 +0800
-selected:       true
+selected:       false
 pub:            "IEEE Transactions on Visualization and Computer Graphics"
 pub_date:       "2023"
 abstract: >-

@@ -1,10 +1,12 @@
 primary_name: "Fan Lei"
-secondary_name: "Sanmisan"
+secondary_name: "Ph.D."
 navbar_name: "Fan Lei"
 
 positions:
 - logo: /assets/images/badges/asu_logo.png  # Logo is optional
-  name: Ph.D., Postdoctoral Fellow at <a href="https://vader.lab.asu.edu" target="_blank">VADER Lab</a>, SCAI, Arizona State University
+  name: Postdoctoral Fellow at <a href="https://vader.lab.asu.edu" target="_blank">VADER Lab</a>, SCAI, Arizona State University
+- logo: /assets/images/badges/uWat.png  # Logo is optional
+  name: Postdoctoral Fellow at <a href="https://vader.lab.asu.edu" target="_blank">WVisdom</a>, School of Computer Science, University of Waterloo (starts on Oct. 1, 2025)
 # - name: Position 2 without logo
 
 
@@ -22,9 +24,7 @@ github: sanmisanFan
 short_bio_text_justify: false
 short_bio: >-
   <p>
-    I am a data visualization researcher currently supervised by 
-    <a href="http://rmaciejewski.faculty.asu.edu" target="_blank">Dr. Ross Maciejewski</a>.
-    My research focuses on visual analytics, geospatial visualization, model explanation, and information visualization. I also have general interests on HCI, NLP, and information perception.
+    I am a data visualization researcher currently working as a Postdoctoral Research Scholar supervised by <a href="http://rmaciejewski.faculty.asu.edu" target="_blank">Dr. Ross Maciejewski</a>. My research focuses on visual analytics, geospatial visualization, model explanation, and information visualization. I also have general interests on HCI, NLP, and information perception. I will start my Postdoctoral Research Fellow journey supervised by <a href="https://www.jeffjianzhao.com/" target="_blank">Dr. Jian Zhao</a> at School of Computer Science, University of Waterloo on October 1st, 2025.
   </p>
   
   <p>

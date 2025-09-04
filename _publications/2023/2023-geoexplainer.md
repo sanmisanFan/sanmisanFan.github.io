@@ -1,7 +1,7 @@
 ---
 title:          "GeoExplainer: A Visual Analytics Framework for Spatial Modeling Contextualization and Report Generation"
 date:           2023-10-26 00:01:00 +0800
-selected:       true
+selected:       false
 pub:            "IEEE Transactions on Visualization and Computer Graphics (IEEE VIS 2023)"
 pub_date:       "2023"
 abstract: >-
